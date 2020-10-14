@@ -3,7 +3,8 @@ from pathlib import Path
 
 
 def walk_folder(folder):
-    p = Path(folder)
+    p = Path(folder).expanduser() # expanduser to translate path such as ~/Desktop, ~/Downloads.
+    print(p)
     types = ["**/*.jpg", "**/*.jpeg", "**/*.png", "**/*.gif"]
     return [(file, file.stat().st_size) for t in types for file in p.glob(t) ]
 
