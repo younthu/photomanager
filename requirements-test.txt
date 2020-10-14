@@ -1,0 +1,2 @@
+-r requirements.txt
+# unitttest is built-in from python 2.2
