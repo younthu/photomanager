@@ -1,13 +1,16 @@
 import click
 from pathlib import Path
 
+
+def walk_folder(folder):
+    p = Path(folder)
+    types = ["**/*.jpg", "**/*.jpeg", "**/*.png", "**/*.gif"]
+    return [x for t in types for x in p.glob(t) ]
+
 @click.command()
 @click.option("--path", default=".", prompt="the folder to scan")
 def photomanager(path):
-    p = Path(path)
-    print(p)
-    file_list = [x for x in p.glob('**/*.jpg')]
-    print( file_list)
+    print( walk_folder(path))
 
 if __name__ == "__main__":
     photomanager()
